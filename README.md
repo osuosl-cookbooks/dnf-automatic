@@ -1,60 +1,57 @@
-dnf-automatic Cookbook
-======================
-TODO: Enter the cookbook description here.
+# dnf-automatic Cookbook
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+The dnf-automatic cookbook takes over management of the ``dnf-automatic`` package which replaced ``yum-cron``. This
+provides an automatic way to upgrade any dnf base operating system.
 
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any
-requirements this cookbook has on platforms, libraries, other cookbooks,
-packages, operating systems, etc.
+## Requirements
 
-e.g.
-#### packages
-- `toaster` - dnf-automatic needs toaster to brown your bagel.
+### Platforms
 
-Attributes
-----------
-TODO: List your cookbook attributes here.
+- CentOS >= 8
 
-e.g.
-#### dnf-automatic::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['dnf-automatic']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+### Chef
 
-Usage
------
-#### dnf-automatic::default
-TODO: Write usage instructions for each cookbook.
+- Chef 13+
 
-e.g.
-Just include `dnf-automatic` in your node's `run_list`:
+### Cookbooks
 
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[dnf-automatic]"
-  ]
-}
+- none
+
+## Attributes
+
+The attributes build the ``/etc/dnf/automatic.conf`` configuration file using the following format:
+
+```ruby
+default['dnf-automatic']['conf']['section']['key'] = 'value'
 ```
 
-Contributing
-------------
+Will generate the following in the config file:
+```text
+[section]
+key = value
+```
+
+The default attributes match the current upstream defaults as installed on CentOS 8 with the exception of enabling
+``apply_updates``. Please consult ``man dnf.automatic`` for more available configuration options.
+
+
+```ruby
+default['dnf-automatic']['conf']['commands']['upgrade_type'] = 'default'
+default['dnf-automatic']['conf']['commands']['random_sleep'] = 0
+default['dnf-automatic']['conf']['commands']['download_updates'] = 'yes'
+default['dnf-automatic']['conf']['commands']['apply_updates'] = 'yes'
+default['dnf-automatic']['conf']['emitters']['emit_via'] = 'stdio'
+default['dnf-automatic']['conf']['email']['email_from'] = 'root@example.com'
+default['dnf-automatic']['conf']['email']['email_to'] = 'root'
+default['dnf-automatic']['conf']['email']['email_host'] = 'localhost'
+default['dnf-automatic']['conf']['command_email']['email_from'] = 'root@example.com'
+default['dnf-automatic']['conf']['command_email']['email_to'] = 'root'
+default['dnf-automatic']['conf']['base']['debuglevel'] = 1
+```
+
+## Recipes
+
+# Contributing
 
 1. Fork the repository on Github
 2. Create a named feature branch (like `username/add_component_x`)
@@ -63,8 +60,8 @@ Contributing
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
-License and Authors
--------------------
+# License and Authors
+
 - Author:: Oregon State University <chef@osuosl.org>
 
 ```text
