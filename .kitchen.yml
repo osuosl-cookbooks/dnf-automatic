@@ -1,0 +1,8 @@
+---
+verifier:
+  name: inspec
+
+suites:
+  - name: default
+    run_list:
+      - recipe[dnf-automatic::default]

@@ -1,0 +1,12 @@
+name             'dnf-automatic'
+maintainer       'Oregon State University'
+maintainer_email 'chef@osuosl.org'
+license          'Apache-2.0'
+chef_version     '>= 13'
+issues_url       'https://github.com/osuosl-cookbooks/dnf-automatic/issues'
+source_url       'https://github.com/osuosl-cookbooks/dnf-automatic'
+description      'Installs/Configures dnf-automatic'
+long_description 'Installs/Configures dnf-automatic'
+version          '0.1.0'
+
+supports         'centos', '~> 7.0'
