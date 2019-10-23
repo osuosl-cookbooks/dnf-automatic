@@ -7,6 +7,6 @@ issues_url       'https://github.com/osuosl-cookbooks/dnf-automatic/issues'
 source_url       'https://github.com/osuosl-cookbooks/dnf-automatic'
 description      'Installs/Configures dnf-automatic'
 long_description 'Installs/Configures dnf-automatic'
-version          '0.1.0'
+version          '1.0.0'
 
 supports         'centos', '~> 8.0'
