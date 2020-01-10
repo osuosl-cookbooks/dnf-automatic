@@ -7,6 +7,6 @@ license          'Apache-2.0'
 chef_version     '>= 14.0'
 description      'Installs/Configures dnf-automatic'
 long_description 'Installs/Configures dnf-automatic'
-version          '1.0.0'
+version          '1.0.1'
 
 supports         'centos', '~> 8.0'
