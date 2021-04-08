@@ -3,6 +3,10 @@ dnf-automatic CHANGELOG
 This file is used to list changes made in each version of the
 dnf-automatic cookbook.
 
+2.0.0 (2021-04-08)
+------------------
+- Update Chef dependency to >= 16
+
 1.1.0 (2020-06-01)
 ------------------
 - Chef 15 fixes
