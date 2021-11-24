@@ -11,7 +11,7 @@ provides an automatic way to upgrade any dnf base operating system.
 
 ### Chef
 
-- Chef 13+
+- Chef 16+
 
 ### Cookbooks
 
