@@ -1,3 +1,4 @@
+default['dnf-automatic']['header'] = true
 default['dnf-automatic']['conf'].tap do |conf|
   conf['commands']['upgrade_type'] = 'default'
   conf['commands']['random_sleep'] = 0
