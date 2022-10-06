@@ -6,6 +6,6 @@ issues_url       'https://github.com/osuosl-cookbooks/dnf-automatic/issues'
 license          'Apache-2.0'
 chef_version     '>= 16.0'
 description      'Installs/Configures dnf-automatic'
-version          '2.0.1'
+version          '2.0.2'
 
 supports         'centos_stream', '~> 8.0'

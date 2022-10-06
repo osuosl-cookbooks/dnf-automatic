@@ -3,6 +3,10 @@ dnf-automatic CHANGELOG
 This file is used to list changes made in each version of the
 dnf-automatic cookbook.
 
+2.0.2 (2022-10-06)
+------------------
+- Allow disabling of header
+
 2.0.1 (2021-11-24)
 ------------------
 - Add testing for CentOS Stream
