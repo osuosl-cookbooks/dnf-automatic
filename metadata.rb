@@ -8,4 +8,5 @@ chef_version     '>= 16.0'
 description      'Installs/Configures dnf-automatic'
 version          '2.0.2'
 
+supports         'almalinux',     '~> 8.0'
 supports         'centos_stream', '~> 8.0'
