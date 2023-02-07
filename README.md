@@ -8,6 +8,7 @@ provides an automatic way to upgrade any dnf base operating system.
 ### Platforms
 
 - CentOS >= 8
+- AlmaLinux >= 8
 
 ### Chef
 
