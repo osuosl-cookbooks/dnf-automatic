@@ -3,6 +3,10 @@ dnf-automatic CHANGELOG
 This file is used to list changes made in each version of the
 dnf-automatic cookbook.
 
+2.0.3 (2023-02-07)
+------------------
+- Add AlmaLinux Support
+
 2.0.2 (2022-10-06)
 ------------------
 - Allow disabling of header
