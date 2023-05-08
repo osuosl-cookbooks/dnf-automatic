@@ -7,7 +7,6 @@ provides an automatic way to upgrade any dnf base operating system.
 
 ### Platforms
 
-- CentOS >= 8
 - AlmaLinux >= 8
 
 ### Chef
@@ -66,7 +65,7 @@ default['dnf-automatic']['conf']['base']['debuglevel'] = 1
 - Author:: Oregon State University <chef@osuosl.org>
 
 ```text
-Copyright:: 2019, Oregon State University
+Copyright:: 2019-2023, Oregon State University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
