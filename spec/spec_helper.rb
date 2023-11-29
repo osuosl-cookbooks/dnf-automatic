@@ -1,9 +1,9 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
 
-ALMA_8 = {
+ALMA_9 = {
   platform: 'almalinux',
-  version: '8',
+  version: '9',
 }.freeze
 
 CENTOS_7 = {
@@ -12,7 +12,7 @@ CENTOS_7 = {
 }.freeze
 
 ALL_PLATFORMS = [
-  ALMA_8,
+  ALMA_9,
   CENTOS_7,
 ].freeze
 

@@ -3,6 +3,10 @@ dnf-automatic CHANGELOG
 This file is used to list changes made in each version of the
 dnf-automatic cookbook.
 
+2.0.5 (2023-11-27)
+------------------
+- Add AlmaLinux 9 Support
+
 2.0.4 (2023-05-10)
 ------------------
 - Remove CentOS Stream 8 references
