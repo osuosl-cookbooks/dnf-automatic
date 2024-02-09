@@ -10,7 +10,7 @@ describe 'dnf-automatic::default' do
         expect { chef_run }.to_not raise_error
       end
       case p
-      when ALMA_8
+      when ALMA_9
         it do
           expect(chef_run).to install_package('dnf-automatic')
         end
