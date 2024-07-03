@@ -9,7 +9,7 @@ transport:
   name: rsync
 
 provisioner:
-  name: chef_solo
+  name: chef_infra
   product_name: cinc
   product_version: '17'
   enforce_idempotency: true
