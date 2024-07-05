@@ -3,6 +3,10 @@ dnf-automatic CHANGELOG
 This file is used to list changes made in each version of the
 dnf-automatic cookbook.
 
+2.0.6 (2024-07-05)
+------------------
+- Test Kitchen Config Refactor
+
 2.0.5 (2024-02-09)
 ------------------
 - Updated to AlmaLinux 9
