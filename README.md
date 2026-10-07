@@ -1,71 +1,67 @@
 # dnf-automatic Cookbook
 
-The dnf-automatic cookbook takes over management of the ``dnf-automatic`` package which replaced ``yum-cron``. This
-provides an automatic way to upgrade any dnf base operating system.
+Manages [dnf-automatic](https://dnf.readthedocs.io/en/latest/automatic.html): the package, `/etc/dnf/automatic.conf`
+and the `dnf-automatic.timer` schedule. It has no recipes or attributes; everything is done through two resources.
+
+- [`dnf_automatic`](documentation/dnf_automatic.md) declares the host's baseline once. `base::packages` does this
+  for every OSL EL host.
+- [`dnf_automatic_policy`](documentation/dnf_automatic_policy.md) lets any other cookbook adjust that baseline (stop
+  applying updates, exclude packages, reboot, security-only, error mail) without knowing about the others. Policies
+  are merged with "most conservative wins" rules, in any declaration order.
+
+```ruby
+# base::packages
+dnf_automatic 'default' do
+  emit_via %w(email)
+  email_from 'root@example.org'
+  email_to %w(dnf-automatic@example.org)
+  on_calendar '*-*-* 10:10 US/Pacific'
+  randomized_delay '15m'
+end
+
+# a database cookbook
+dnf_automatic_policy 'osl-foo' do
+  exclude %w(mariadb*)
+  reboot 'when-needed'
+end
+```
+
+The resulting configuration is rendered once, at the end of the Chef run.
 
 ## Requirements
 
 ### Platforms
 
-- AlmaLinux >= 8
+- AlmaLinux 8, 9 and 10
+
+Some options are only honoured by newer dnf-automatic releases; see the
+[release support table](documentation/dnf_automatic.md#release-support).
 
 ### Chef
 
-- Chef 16+
+- Chef 18+
 
 ### Cookbooks
 
-- none
+- osl-resources
 
-## Attributes
+## Upgrading from 2.x
 
-The attributes build the ``/etc/dnf/automatic.conf`` configuration file using the following format:
+The `dnf-automatic::default` recipe and the `node['dnf-automatic']` attributes are gone. Replace
+`include_recipe 'dnf-automatic'` and any attribute overrides with a `dnf_automatic` declaration, and use
+`dnf_automatic_policy` from every other cookbook.
 
-```ruby
-default['dnf-automatic']['conf']['section']['key'] = 'value'
-```
+## Testing
 
-Will generate the following in the config file:
-```text
-[section]
-key = value
-```
+Kitchen suites: `default` (base-like baseline), `policy` (policies around and inside other resources, EL9+) and
+`disabled` (a policy turning the timer off). Each one runs a recipe from `test/cookbooks/dnf-automatic-test`.
 
-The default attributes match the current upstream defaults as installed on CentOS 8 with the exception of enabling
-``apply_updates``. Please consult ``man dnf.automatic`` for more available configuration options.
-
-
-```ruby
-default['dnf-automatic']['conf']['commands']['upgrade_type'] = 'default'
-default['dnf-automatic']['conf']['commands']['random_sleep'] = 0
-default['dnf-automatic']['conf']['commands']['download_updates'] = 'yes'
-default['dnf-automatic']['conf']['commands']['apply_updates'] = 'yes'
-default['dnf-automatic']['conf']['emitters']['emit_via'] = 'stdio'
-default['dnf-automatic']['conf']['email']['email_from'] = 'root@example.com'
-default['dnf-automatic']['conf']['email']['email_to'] = 'root'
-default['dnf-automatic']['conf']['email']['email_host'] = 'localhost'
-default['dnf-automatic']['conf']['command_email']['email_from'] = 'root@example.com'
-default['dnf-automatic']['conf']['command_email']['email_to'] = 'root'
-default['dnf-automatic']['conf']['base']['debuglevel'] = 1
-```
-
-## Recipes
-
-# Contributing
-
-1. Fork the repository on Github
-2. Create a named feature branch (like `username/add_component_x`)
-3. Write tests for your change
-4. Write your change
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
-
-# License and Authors
+## License and Authors
 
 - Author:: Oregon State University <chef@osuosl.org>
 
 ```text
-Copyright:: 2019-2023, Oregon State University
+Copyright:: 2019-2026, Oregon State University
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

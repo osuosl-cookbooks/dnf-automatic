@@ -1,8 +1,8 @@
 #
-# Cookbook:: dnf-automatic
-# Recipe:: default
+# Cookbook:: dnf-automatic-test
+# Recipe:: disabled
 #
-# Copyright:: 2019-2026, Oregon State University
+# Copyright:: 2026, Oregon State University
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,15 +15,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-if node['platform_version'].to_i < 8
-  Chef::Log.warn('dnf-automatic is only supported on EL8 and greater')
-  return
-end
 
-package 'dnf-automatic'
+include_recipe 'dnf-automatic-test::default'
 
-template '/etc/dnf/automatic.conf'
-
-service 'dnf-automatic.timer' do
-  action [:enable, :start]
+dnf_automatic_policy 'maintenance' do
+  enabled false
 end
