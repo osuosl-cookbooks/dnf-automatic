@@ -3,6 +3,10 @@ dnf-automatic CHANGELOG
 This file is used to list changes made in each version of the
 dnf-automatic cookbook.
 
+3.0.0 (2026-10-07)
+------------------
+- Replace attributes with dnf_automatic resources
+
 2.0.8 (2026-04-16)
 ------------------
 - Chef 19 upgrade

@@ -6,7 +6,7 @@ issues_url       'https://github.com/osuosl-cookbooks/dnf-automatic/issues'
 license          'Apache-2.0'
 chef_version     '>= 18.0'
 description      'Installs/Configures dnf-automatic'
-version          '2.0.8'
+version          '3.0.0'
 
 depends 'osl-resources'
 
