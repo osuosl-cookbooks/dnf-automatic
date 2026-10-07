@@ -23,4 +23,13 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[dnf-automatic::default]
+      - recipe[dnf-automatic-test::default]
+  - name: policy
+    # EL8's dnf-automatic ignores reboot and send_error_messages, so the resource refuses them there.
+    excludes:
+      - almalinux-8
+    run_list:
+      - recipe[dnf-automatic-test::policy]
+  - name: disabled
+    run_list:
+      - recipe[dnf-automatic-test::disabled]
